@@ -887,7 +887,7 @@ static void __exit nocturn_clean(void)                        //  @ECA
    pr_info("ovnocturn_xs_camera.nocturn_clean() - Entering\r\n");        //  @ECA
    pr_info("ovnocturn_xs_camera.nocturn_clean() - Skipping i2c driver removal\r\n");        //  @ECA
 	
-   i2c_del_driver(&nocturn_i2c_driver);
+   //i2c_del_driver(&nocturn_i2c_driver);
 
 }
 
