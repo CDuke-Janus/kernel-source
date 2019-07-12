@@ -893,7 +893,8 @@ static void __exit nocturn_clean(void)                        //  @ECA
 
 module_init(nocturn_init);                                    //  @ECA
 module_exit(nocturn_clean);                                   //  @ECA
-//module_i2c_driver(nocturn_i2c_driver);
+//module_i2c_driver(nocturn_i2c_driver);			
+//test comment, ignore
 
 
 MODULE_AUTHOR("JANUS Research Group, Inc.");
