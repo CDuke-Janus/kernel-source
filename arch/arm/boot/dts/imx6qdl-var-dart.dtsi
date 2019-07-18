@@ -166,9 +166,10 @@
 
 	v4l2_cap_1 {
 		compatible = "fsl,imx6q-v4l2-capture";
-		ipu_id = <1>;
+		ipu_id = <0>;
 		csi_id = <1>;
 		mclk_source = <0>;
+		mipi_camera = <1>;
 		status = "okay";
 	};
 
@@ -230,6 +231,20 @@
 	hdmi_edid: edid@50 {
 		compatible = "fsl,imx6-hdmi-i2c";
 		reg = <0x50>;
+	};
+	
+	ov564x: ov564x@3e {
+		compatible = "ovti,ov564x";
+		reg = <0x3e>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_ipu2>;
+		clocks = <&clks 200>;
+		clock-names = "csi_mclk";
+		pwn-gpios = <&gpio3 4 0>;
+		rst-gpios = <&gpio3 5 0>;
+		csi_id = <1>;
+		mclk = <10000000>;
+		mclk_source = <0>;
 	};
 
 	ov564x_mipi: ov564x_mipi@3c {
@@ -357,7 +372,7 @@
 		pwn-gpios = <&gpio3 4 0>;
 		rst-gpios = <&gpio3 5 0>;
 		csi_id = <1>;
-		mclk = <10000000>;
+		mclk = <24000000>;
 		mclk_source = <0>;
 	};
 };
