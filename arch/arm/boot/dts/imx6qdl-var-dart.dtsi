@@ -168,12 +168,10 @@
 		status = "okay";
 	};
 
-
-
 	driver {
        		compatible = "ovnocturn_xs,ovnocturn_xs_camera";
        		pinctrl-names = "default";
-       		pinctrl-0 = <&pinctrl_ipu2_csi1>;
+       		pinctrl-0 = <&pinctrl_ipu2>;
        		clocks = <&clks 200>;
        		clock-names = "csi_mclk";
        		csi_id = <1>;
