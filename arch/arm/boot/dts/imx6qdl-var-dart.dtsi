@@ -356,6 +356,7 @@
 		clock-names = "csi_mclk";
 		pwn-gpios = <&gpio3 4 0>;
 		rst-gpios = <&gpio3 5 0>;
+		ipu_id = <1>;
 		csi_id = <1>;
 		mclk = <10000000>;
 		mclk_source = <0>;
