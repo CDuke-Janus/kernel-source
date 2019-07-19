@@ -358,7 +358,7 @@
 		rst-gpios = <&gpio3 5 0>;
 		ipu_id = <1>;
 		csi_id = <1>;
-		mclk = <10000000>;
+		mclk = <24000000>;
 		mclk_source = <0>;
 	};
 };
