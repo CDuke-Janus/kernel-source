@@ -230,34 +230,44 @@ put_node:
 	of_node_put(np);
 }
 
-static void __init imx6q_csi_mux_init(void)
-{
-	/*
+ static void __init imx6q_csi_mux_init(void)
+ {
+ 	/*
 	 * DART-MX6 board:
 	 * IPU2 CSI1 connects to parallel interface.
 	 * Set GPR1 bit 20 to 0x1.
 	 *
-	 */
-	struct regmap *gpr;
-
-	gpr = syscon_regmap_lookup_by_compatible("fsl,imx6q-iomuxc-gpr");
-	if (!IS_ERR(gpr)) {
+	 * MX6Q SabreSD/VAR-SOM-MX6 boards:
+ 	 * IPU1 CSI0 connects to parallel interface.
+ 	 * Set GPR1 bit 19 to 0x1.
+ 	 *
+	 * MX6DL SabreSD/VAR-SOM-MX6 boards:
+ 	 * IPU1 CSI0 connects to parallel interface.
+ 	 * Set GPR13 bit 0-2 to 0x4.
+ 	 * IPU1 CSI1 connects to MIPI CSI2 virtual channel 1.
+ 	 * Set GPR13 bit 3-5 to 0x1.
+ 	 */
+ 	struct regmap *gpr;
+ 
+ 	gpr = syscon_regmap_lookup_by_compatible("fsl,imx6q-iomuxc-gpr");
+ 	if (!IS_ERR(gpr)) {
 		if (of_machine_is_compatible("fsl,imx6q-var-dart")){
 			regmap_update_bits(gpr, IOMUXC_GPR1, 1 << 20, 1 << 20);
 			pr_info("PR_INFO: mach-imx6qc ran for var-DART, shifted bit\r\n");   
-			printk("PRINTK: mach-imx6qc ran for var-DART, shifted bit\r\n");
-		}
-		else if (of_machine_is_compatible("fsl,imx6q-var-som")){
-			regmap_update_bits(gpr, IOMUXC_GPR1,  1 << 19, 1<<19);
-			regmap_update_bits(gpr, IOMUXC_GPR13, 0x3F, 0x0C);
-			pr_info("PR_INFO: mach-imx6qc ran for var-SOM, shifted bit\r\n");   
-			printk("PRINTK: mach-imx6qc ran for var-SOM, shifted bit\r\n");
-		}
-	} else {
-		pr_err("%s(): failed to find fsl,imx6q-iomux-gpr regmap\n",
-		       __func__);
-	}
-}
+			printk("PRINTK: mach-imx6qc ran for var-DART, shifted bit\r\n");}
+		else if (of_machine_is_compatible("fsl,imx6q-sabresd") ||
+			of_machine_is_compatible("fsl,imx6q-sabreauto") ||
+			of_machine_is_compatible("fsl,imx6q-var-som"))
+ 			regmap_update_bits(gpr, IOMUXC_GPR1, 1 << 19, 1 << 19);
+ 		else if (of_machine_is_compatible("fsl,imx6dl-sabresd") ||
+			 of_machine_is_compatible("fsl,imx6dl-sabreauto") ||
+			 of_machine_is_compatible("fsl,imx6dl-var-som"))
+ 			regmap_update_bits(gpr, IOMUXC_GPR13, 0x3F, 0x0C);
+ 	} else {
+ 		pr_err("%s(): failed to find fsl,imx6q-iomux-gpr regmap\n",
+ 		       __func__);
+ 	}
+ }
 
 static void __init imx6q_axi_init(void)
 {
