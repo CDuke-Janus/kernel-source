@@ -242,11 +242,17 @@ static void __init imx6q_csi_mux_init(void)
 
 	gpr = syscon_regmap_lookup_by_compatible("fsl,imx6q-iomuxc-gpr");
 	if (!IS_ERR(gpr)) {
-		if (of_machine_is_compatible("fsl,imx6q-var-dart"))
+		if (of_machine_is_compatible("fsl,imx6q-var-dart")){
 			regmap_update_bits(gpr, IOMUXC_GPR1, 1 << 20, 1 << 20);
+			pr_info("mach-imx6qc ran for var-DART, shifted bit\r\n");   
+			printk("mach-imx6qc ran for var-DART, shifted bit\r\n");
+		}
 		else if (of_machine_is_compatible("fsl,imx6q-var-som")){
 			regmap_update_bits(gpr, IOMUXC_GPR1,  1 << 19, 1<<19);
-			regmap_update_bits(gpr, IOMUXC_GPR13, 0x3F, 0x0C);}
+			regmap_update_bits(gpr, IOMUXC_GPR13, 0x3F, 0x0C);
+			pr_info("mach-imx6qc ran for var-SOM, shifted bit\r\n");   
+			printk("mach-imx6qc ran for var-SOM, shifted bit\r\n");
+		}
 	} else {
 		pr_err("%s(): failed to find fsl,imx6q-iomux-gpr regmap\n",
 		       __func__);
