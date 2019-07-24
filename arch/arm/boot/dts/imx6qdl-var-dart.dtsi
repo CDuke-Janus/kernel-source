@@ -225,7 +225,7 @@
 		clock-names = "csi_mclk";
 		pwn-gpios = <&gpio3 13 1>;
 		rst-gpios = <&gpio4 10 0>;
-		csi_id = <0>;
+		csi_id = <1>;
 		mclk = <24000000>;
 		mclk_source = <0>;
 	};
@@ -342,8 +342,8 @@
 		clock-names = "csi_mclk";
 		pwn-gpios = <&gpio3 4 0>;
 		rst-gpios = <&gpio3 5 0>;
-		ipu_id = <1>;
-		csi_id = <1>;
+		ipu_id = <0>;
+		csi_id = <0>;
 		mclk = <24000000>;
 		mclk_source = <0>;
 	};
