@@ -44,6 +44,7 @@
 #include "mxc_v4l2_capture.h"
 #include "ipu_prp_sw.h"
 
+#define DEBUG
 #define init_MUTEX(sem)         sema_init(sem, 1)
 
 static struct platform_device_id imx_v4l2_devtype[] = {
