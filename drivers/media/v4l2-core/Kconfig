@@ -11,7 +11,7 @@ config VIDEO_V4L2
 
 config VIDEO_ADV_DEBUG
 	bool "Enable advanced debug functionality on V4L2 drivers"
-	default n
+	default y
 	---help---
 	  Say Y here to enable advanced debugging functionality on some
 	  V4L devices.
