@@ -155,7 +155,7 @@
 		ipu_id = <0>;
 		csi_id = <0>;
 		mclk_source = <0>;
-		status = "okay";
+		status = "disabled";
 	};
 	
 	v4l2_cap_1 {
