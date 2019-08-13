@@ -342,7 +342,7 @@
 	};
 
 	ov564x: ov564x@3c {
-		compatible = "ovti,ov564x";
+		compatible = "ovti,ov5642";
 		reg = <0x3c>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_ipu2>;
