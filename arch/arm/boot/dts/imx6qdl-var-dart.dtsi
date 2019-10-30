@@ -449,7 +449,7 @@
 
 
 
-
+/*
 		pinctrl_ipu2_csi1: ipu1grp-csi0
 			{ 
 				fsl,pins = <
@@ -474,8 +474,9 @@
 				MX6QDL_PAD_EIM_D21__IPU2_CSI1_DATA11 0x0000b0b1
 			>; 
 		};	
+*/
 		
-		pinctrl_ipu2: ipu2grp { //parallel cam 
+		pinctrl_ipu2: ipu2grp { /*parallel cam*/ 
 
 			fsl,pins = <
 				MX6QDL_PAD_EIM_A17__IPU2_CSI1_DATA12		0x0000b0b1
